@@ -14,14 +14,12 @@ ThemeData sicklerLightTheme(BuildContext context) {
       iconTheme: const IconThemeData(color: kDark),
       primaryIconTheme: const IconThemeData(color: kDark),
       fontFamily: 'Poppins',
-      textTheme: TextTheme(
+      textTheme: const TextTheme(
         bodyText1: kBodyBold,
-        bodyMedium: kButtonText,
-        bodySmall: kFootNote,
-        headlineLarge: kHeading,
-        headlineMedium: kHeadingLight,
+        bodyText2: kBody,
+        headline1: kHeading,
+        headline2: kHeadingLight,
       ),
-      //colorScheme: ColorScheme.light().copyWith(secondary: cLightGrey),
       colorScheme: const ColorScheme.light().copyWith(secondary: kFuchsia80),
       cardColor: kDark20);
 }
@@ -34,20 +32,18 @@ ThemeData sicklerDarkTheme(BuildContext context) {
       primaryColor: kPurple80,
       primaryColorLight: kPurple40,
       primaryColorDark: kPurple,
-      scaffoldBackgroundColor: kDark,
+      scaffoldBackgroundColor: Colors.black,
       brightness: Brightness.dark,
       backgroundColor: kDark,
       iconTheme: const IconThemeData(color: Colors.white),
       primaryIconTheme: const IconThemeData(color: Colors.white),
       fontFamily: 'Poppins',
-      textTheme: TextTheme(
+      textTheme: const TextTheme(
         bodyText1: kBodyBold,
-        bodyMedium: kButtonText,
-        bodySmall: kFootNote,
-        headlineLarge: kHeading,
-        headlineMedium: kHeadingLight,
+        bodyText2: kBody,
+        headline1: kHeading,
+        headline2: kHeadingLight,
       ),
-      //colorScheme: ColorScheme.light().copyWith(secondary: cLightGrey),
-      colorScheme: const ColorScheme.dark().copyWith(secondary: kFuchsia60),
+      colorScheme: const ColorScheme.dark().copyWith(secondary: kFuchsia80),
       cardColor: kDark80);
 }
