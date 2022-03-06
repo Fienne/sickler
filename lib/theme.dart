@@ -14,11 +14,11 @@ ThemeData sicklerLightTheme(BuildContext context) {
       iconTheme: const IconThemeData(color: kDark),
       primaryIconTheme: const IconThemeData(color: kDark),
       fontFamily: 'Poppins',
-      textTheme: const TextTheme(
-        bodyText1: kBodyBold,
-        bodyText2: kBody,
-        headline1: kHeading,
-        headline2: kHeadingLight,
+      textTheme: TextTheme(
+        bodyText1: kBodyBold.copyWith(color: kDark),
+        bodyText2: kBody.copyWith(color: kDark),
+        headline1: kHeading.copyWith(color: kDark),
+        headline2: kHeadingLight.copyWith(color: kDark),
       ),
       colorScheme: const ColorScheme.light().copyWith(secondary: kFuchsia80),
       cardColor: kDark20);
@@ -38,11 +38,11 @@ ThemeData sicklerDarkTheme(BuildContext context) {
       iconTheme: const IconThemeData(color: Colors.white),
       primaryIconTheme: const IconThemeData(color: Colors.white),
       fontFamily: 'Poppins',
-      textTheme: const TextTheme(
-        bodyText1: kBodyBold,
-        bodyText2: kBody,
-        headline1: kHeading,
-        headline2: kHeadingLight,
+      textTheme: TextTheme(
+        bodyText1: kBodyBold.copyWith(color: Colors.white),
+        bodyText2: kBody.copyWith(color: Colors.white),
+        headline1: kHeading.copyWith(color: Colors.white),
+        headline2: kHeadingLight.copyWith(color: Colors.white),
       ),
       colorScheme: const ColorScheme.dark().copyWith(secondary: kFuchsia80),
       cardColor: kDark80);

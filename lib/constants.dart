@@ -64,7 +64,7 @@ const TextStyle kFootNote =
 ///----AppBar Style----///
 
 AppBarTheme appBarTheme = const AppBarTheme(
-  //backgroundColor: Colors.transparent,
+  backgroundColor: Colors.transparent,
   //foregroundColor: Colors.transparent,
   elevation: 0,
 );
