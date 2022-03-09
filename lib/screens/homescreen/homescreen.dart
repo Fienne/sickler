@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sickler/constants.dart';
 import 'package:sickler/global_components/appbar.dart';
+import 'package:sickler/screens/homescreen/components/medicine_card.dart';
 import 'package:sickler/screens/homescreen/components/stats_card.dart';
-
+import 'package:sickler/screens/homescreen/components/water_card.dart';
+import 'package:sickler/size_config.dart';
 import 'components/recommendation_card.dart';
 
 class SicklerHomeScreen extends StatefulWidget {
@@ -18,25 +19,27 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: SicklerAppBar(
-        leading: Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(
-            color: Theme.of(context).canvasColor,
-            borderRadius: BorderRadius.circular(15),
-          ),
-        ),
-      ),
+      extendBodyBehindAppBar: true,
+      appBar: const SicklerAppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Container(
+                margin: const EdgeInsets.only(
+                    left: kDefaultPadding, top: kDefaultPadding2x * 2),
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+              SizedBox(height: relHeight(kDefaultPadding2x, context)),
               Padding(
-                padding: const EdgeInsets.only(
-                    left: kDefaultPadding, top: kDefaultPadding),
+                padding: const EdgeInsets.only(left: kDefaultPadding),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -52,6 +55,8 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
                 ),
               ),
               const SizedBox(height: 20),
+
+              ///Recommendation Card
               const RecommendationCard(
                   title: "You haven't been following your regimen.",
                   description:
@@ -67,13 +72,15 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
               const SizedBox(
                 height: kDefaultPadding,
               ),
+
+              ///Statistics Cards
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   StatsCard(
                     iconLink: "assets/svg/water_drop.svg",
                     statsTitle: "Water",
-                    statsValue: 1.7,
+                    statsValue: "1.7",
                     statsUnit: "Litres",
                     statsTimestamp: "20 min",
                     colour: kBlue,
@@ -82,7 +89,7 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
                   StatsCard(
                     iconLink: "assets/svg/hb_icon.svg",
                     statsTitle: "Hb",
-                    statsValue: 12.8,
+                    statsValue: "12.8",
                     statsUnit: "g/dl",
                     statsTimestamp: "Feb 13",
                     colour: kFuchsia,
@@ -90,13 +97,16 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: kDefaultPadding,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   StatsCard(
                     iconLink: "assets/svg/o2_icon.svg",
                     statsTitle: "Oxygen",
-                    statsValue: 81,
+                    statsValue: "81",
                     statsUnit: "%",
                     statsTimestamp: "28 sec ago",
                     colour: kOrange,
@@ -105,7 +115,7 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
                   StatsCard(
                     iconLink: "assets/svg/drug_icon.svg",
                     statsTitle: "Drugs",
-                    statsValue: 6,
+                    statsValue: "6",
                     statsUnit: "pm",
                     statsTimestamp: "tonight",
                     colour: kPurple,
@@ -124,53 +134,23 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
               const SizedBox(
                 height: kDefaultPadding,
               ),
-              Container(
-                width: double.infinity,
-                height: 100,
-                padding: const EdgeInsets.symmetric(
-                    horizontal: kDefaultPadding,
-                    vertical: kDefaultPadding * .5),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      left: 0,
-                      top: 0,
-                      child: SvgPicture.asset(
-                        "assets/svg/drug_icon.svg",
-                        color: kBlue,
-                      ),
-                    ),
-                    Positioned(
-                      top: 0,
-                      left: kDefaultPadding2x,
-                      child: Text(
-                        "Antalgex",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1!
-                            .copyWith(fontSize: 18),
-                      ),
-                    ),
-                    Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: Checkbox(
-                        visualDensity: VisualDensity.compact,
-                        value: true,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            value = !value!;
-                          });
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+
+              ///Medicine Card
+              const SicklerMedicineCard(
+                  daysLeft: "17 days",
+                  dose: "2 capsule",
+                  medicineName: "Antalgex",
+                  time: "8:00 pm"),
+              const SizedBox(height: kDefaultPadding),
+
+              ///Water Reminder Card
+              const WaterReminderCard(
+                  amount: "1 Cup",
+                  progress: "1.7",
+                  progressPercentage: "64",
+                  time: "5:54 PM"),
+
+              const SizedBox(height: kDefaultPadding2x * 3),
             ],
           ),
         ),
