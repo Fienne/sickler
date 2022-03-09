@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sickler/Theme.dart';
+import 'package:sickler/screens/authscreens/signin.dart';
 import 'package:sickler/screens/homescreen/homescreen.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class Sickler extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Sickler',
       theme: sicklerLightTheme(context),
-      home: const SicklerHomeScreen(),
+      home: const SicklerSignInScreen(),
     );
   }
 }
