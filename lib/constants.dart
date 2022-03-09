@@ -40,7 +40,7 @@ const Color kGreen40 = Color(0xFFD0F9EF);
 const Color kGreen20 = Color(0xFFE8FDF8);
 
 const Color kDark = Color(0xFF353535);
-const Color kDark80 = Color(0xFF727272);
+const Color kDark80 = Color(0xFF4C4C4C);
 const Color kDark60 = Color(0xFFBDBDBD);
 const Color kDark40 = Color(0xFFD7D7D7);
 const Color kDark20 = Color(0xFFF4F4F4);
@@ -65,6 +65,6 @@ const TextStyle kFootNote =
 
 AppBarTheme appBarTheme = const AppBarTheme(
   backgroundColor: Colors.transparent,
-  //foregroundColor: Colors.transparent,
+  foregroundColor: Colors.transparent,
   elevation: 0,
 );
