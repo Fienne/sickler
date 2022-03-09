@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sickler/Theme.dart';
+import 'package:sickler/screens/homescreen/homescreen.dart';
 
 void main() {
   runApp(const Sickler());
@@ -15,21 +16,7 @@ class Sickler extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Sickler',
       theme: sicklerLightTheme(context),
-      home: const HomeScreen(),
+      home: const SicklerHomeScreen(),
     );
-  }
-}
-
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
