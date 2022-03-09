@@ -8,6 +8,8 @@ import 'package:sickler/size_config.dart';
 import 'components/recommendation_card.dart';
 
 class SicklerHomeScreen extends StatefulWidget {
+  static const String id = "SicklerHomeScreen";
+
   const SicklerHomeScreen({Key? key}) : super(key: key);
 
   @override
