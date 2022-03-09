@@ -6,7 +6,7 @@ import '../../../size_config.dart';
 class StatsCard extends StatelessWidget {
   final String iconLink;
   final String statsTitle;
-  final double statsValue;
+  final String statsValue;
   final String statsUnit;
   final Color bgColour;
   final Color colour;
