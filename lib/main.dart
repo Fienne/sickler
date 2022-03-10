@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sickler/Theme.dart';
-import 'package:sickler/screens/authscreens/signin.dart';
+import 'package:sickler/screens/authscreens/create_account_screen.dart';
+import 'package:sickler/screens/authscreens/sign_in_screen.dart';
 import 'package:sickler/screens/homescreen/homescreen.dart';
+import 'package:sickler/screens/info_gathering_screens/personal_info_gathering_screen.dart';
 
 void main() {
   runApp(const Sickler());
@@ -17,7 +19,15 @@ class Sickler extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Sickler',
       theme: sicklerLightTheme(context),
-      home: const SicklerSignInScreen(),
+      home: const PersonalInfoGatheringScreen(),
+      routes: {
+        SicklerHomeScreen.id: (context) => const SicklerHomeScreen(),
+        SicklerSignInScreen.id: (context) => const SicklerSignInScreen(),
+        SicklerCreateAccountScreen.id: (context) =>
+            const SicklerCreateAccountScreen(),
+        PersonalInfoGatheringScreen.id: (context) =>
+            const PersonalInfoGatheringScreen()
+      },
     );
   }
 }
