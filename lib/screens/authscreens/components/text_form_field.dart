@@ -4,7 +4,9 @@ import '../../../constants.dart';
 
 class SicklerTextFormField extends StatelessWidget {
   final TextEditingController controller;
-  const SicklerTextFormField({Key? key, required this.controller})
+  final String hintText;
+  const SicklerTextFormField(
+      {Key? key, required this.controller, required this.hintText})
       : super(key: key);
 
   @override
@@ -19,7 +21,7 @@ class SicklerTextFormField extends StatelessWidget {
         ),
         isDense: false,
         filled: true,
-        hintText: "Email",
+        hintText: hintText,
         hintStyle: Theme.of(context).textTheme.bodyText2!.copyWith(
               color: kDark40,
             ),
@@ -32,7 +34,9 @@ class SicklerTextFormField extends StatelessWidget {
 
 class SicklerPasswordField extends StatelessWidget {
   final TextEditingController controller;
-  const SicklerPasswordField({Key? key, required this.controller})
+  final String hintText;
+  const SicklerPasswordField(
+      {Key? key, required this.controller, required this.hintText})
       : super(key: key);
 
   @override
@@ -48,7 +52,7 @@ class SicklerPasswordField extends StatelessWidget {
         ),
         isDense: false,
         filled: true,
-        hintText: "Password",
+        hintText: hintText,
         hintStyle: Theme.of(context).textTheme.bodyText2!.copyWith(
               color: kDark40,
             ),

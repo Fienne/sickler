@@ -19,7 +19,6 @@ class SicklerHomeScreen extends StatefulWidget {
 class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
   @override
   Widget build(BuildContext context) {
-    Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: const SicklerAppBar(),
