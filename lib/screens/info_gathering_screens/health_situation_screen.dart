@@ -1,0 +1,50 @@
+import 'package:flutter/material.dart';
+import 'package:sickler/constants.dart';
+import 'package:sickler/global_components/sickler_button.dart';
+import 'package:sickler/size_config.dart';
+import '../../global_components/scaffold_body_with_top_image.dart';
+
+class HealthSituationScreen extends StatefulWidget {
+  static const String id = "PersonalInfoGatheringScreen";
+  const HealthSituationScreen({Key? key}) : super(key: key);
+
+  @override
+  _HealthSituationScreenState createState() => _HealthSituationScreenState();
+}
+
+class _HealthSituationScreenState extends State<HealthSituationScreen> {
+  TextEditingController gender = TextEditingController();
+  TextEditingController age = TextEditingController();
+  TextEditingController height = TextEditingController();
+  TextEditingController weight = TextEditingController();
+  TextEditingController genotype = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SicklerScaffoldBodyWithTopImage(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: relHeight(80, context)),
+            Text(
+              "Your Health Situation",
+              style: Theme.of(context).textTheme.headline2,
+            ),
+            SizedBox(height: relHeight(50, context)),
+
+            ///Next Button
+            SicklerColoredButton(
+              buttonLabel: "Next",
+              buttonBgColour: kPurple80,
+              hasShadow: true,
+              labelColour: Colors.white,
+              onPressed: () {},
+            ),
+            SizedBox(height: relHeight(40, context)),
+          ],
+        ),
+      ),
+    );
+  }
+}
