@@ -5,7 +5,7 @@ import 'package:sickler/size_config.dart';
 import 'components/personal_info_gathering_list_item.dart';
 
 class PersonalInfoGatheringScreen extends StatefulWidget {
-  static const String id = "PersonalInfoGatheringScreen";
+  static const String id = "personal info gathering screen";
   const PersonalInfoGatheringScreen({Key? key}) : super(key: key);
 
   @override

@@ -5,7 +5,7 @@ import 'package:sickler/size_config.dart';
 import '../../global_components/scaffold_body_with_top_image.dart';
 
 class HealthSituationScreen extends StatefulWidget {
-  static const String id = "PersonalInfoGatheringScreen";
+  static const String id = "health situation screen";
   const HealthSituationScreen({Key? key}) : super(key: key);
 
   @override
@@ -31,7 +31,19 @@ class _HealthSituationScreenState extends State<HealthSituationScreen> {
               "Your Health Situation",
               style: Theme.of(context).textTheme.headline2,
             ),
-            SizedBox(height: relHeight(50, context)),
+            Text(
+              "How severe are your crises?",
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
+            Text(
+              "Crises Frequency",
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+
+            Text(
+              "Average severity",
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
 
             ///Next Button
             SicklerColoredButton(

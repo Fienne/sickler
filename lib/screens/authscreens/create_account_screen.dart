@@ -8,7 +8,7 @@ import '../../constants.dart';
 import '../../size_config.dart';
 
 class SicklerCreateAccountScreen extends StatefulWidget {
-  static const String id = "SicklerCreateAccountScreen";
+  static const String id = "create account screen";
   const SicklerCreateAccountScreen({Key? key}) : super(key: key);
 
   @override
