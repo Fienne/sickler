@@ -9,7 +9,7 @@ import '../../constants.dart';
 import '../../size_config.dart';
 
 class SicklerSignInScreen extends StatefulWidget {
-  static const String id = "SicklerSignInScreen";
+  static const String id = "sign in screen";
   const SicklerSignInScreen({Key? key}) : super(key: key);
 
   @override
