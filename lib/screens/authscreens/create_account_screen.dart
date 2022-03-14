@@ -7,17 +7,15 @@ import 'package:sickler/screens/authscreens/sign_in_screen.dart';
 import '../../constants.dart';
 import '../../size_config.dart';
 
-class SicklerCreateAccountScreen extends StatefulWidget {
+class CreateAccountScreen extends StatefulWidget {
   static const String id = "create account screen";
-  const SicklerCreateAccountScreen({Key? key}) : super(key: key);
+  const CreateAccountScreen({Key? key}) : super(key: key);
 
   @override
-  _SicklerCreateAccountScreenState createState() =>
-      _SicklerCreateAccountScreenState();
+  _CreateAccountScreenState createState() => _CreateAccountScreenState();
 }
 
-class _SicklerCreateAccountScreenState
-    extends State<SicklerCreateAccountScreen> {
+class _CreateAccountScreenState extends State<CreateAccountScreen> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController firstName = TextEditingController();

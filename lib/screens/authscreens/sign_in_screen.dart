@@ -100,8 +100,7 @@ class _SicklerSignInScreenState extends State<SicklerSignInScreen> {
                       onPressed: () {
                         HapticFeedback.lightImpact();
                         Feedback.forTap(context);
-                        Navigator.pushNamed(
-                            context, SicklerCreateAccountScreen.id);
+                        Navigator.pushNamed(context, CreateAccountScreen.id);
                       },
                       isPrimaryButton: false),
                   SizedBox(height: relHeight(kDefaultPadding, context)),
