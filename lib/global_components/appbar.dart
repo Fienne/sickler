@@ -9,6 +9,7 @@ class SicklerAppBar extends StatelessWidget with PreferredSizeWidget {
   final Color? iconColor;
   final Widget? leading;
   final bool? showActions;
+  final bool? showBackButton;
 
   const SicklerAppBar({
     Key? key,
@@ -16,6 +17,7 @@ class SicklerAppBar extends StatelessWidget with PreferredSizeWidget {
     this.iconColor,
     this.leading,
     this.showActions = true,
+    this.showBackButton = true,
   }) : super(key: key);
 
   @override
@@ -23,7 +25,20 @@ class SicklerAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       //leadingWidth: relWidth(kDefaultPadding2x + 50, context),
       toolbarHeight: preferredSize.height,
-      leading: leading,
+      leading: leading ??
+          (showBackButton!
+              ? Padding(
+                  padding: const EdgeInsets.only(
+                      left: kDefaultPadding, top: kDefaultPadding2x),
+                  child: IconButton(
+                      onPressed: () {
+                        HapticFeedback.lightImpact();
+                        Feedback.forTap(context);
+                        Navigator.pop(context);
+                      },
+                      icon: SvgPicture.asset("assets/svg/back_icon.svg")),
+                )
+              : null),
       actions: showActions == true
           ? [
               IconButton(
