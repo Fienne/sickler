@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sickler/constants.dart';
 import 'package:sickler/global_components/scaffold_body_with_top_image.dart';
 import '../../global_components/circular_add_button.dart';
@@ -20,7 +21,7 @@ class _WaterScreenState extends State<WaterScreen> {
   @override
   Widget build(BuildContext context) {
     return SicklerScaffoldBodyWithTopImage(
-      showPageTitile: true,
+      showPageTitle: true,
       pageTitle: "Water",
       topBgColour: kBlue20,
       showBackButton: false,
@@ -28,7 +29,24 @@ class _WaterScreenState extends State<WaterScreen> {
         padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
         child: Column(
           children: [
-            const SizedBox(height: 60),
+            Padding(
+              padding: const EdgeInsets.only(top: kDefaultPadding),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: IconButton(
+                  onPressed: () {
+                    ///Todo: open settings
+                  },
+                  icon: SvgPicture.asset(
+                    "assets/svg/cogwheel_icon.svg",
+                    color: kDark60,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 4,
+            ),
 
             ///Water Percentage
             const SicklerCircularPercentIndicator(
@@ -61,7 +79,8 @@ class _WaterScreenState extends State<WaterScreen> {
                     ),
                     const SizedBox(height: 20),
                     const WeekAverage(
-                      amount: "1.64",
+                      amount: "1.64 L",
+                      unit: "L",
                     )
                   ],
                 ),
