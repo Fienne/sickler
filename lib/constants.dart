@@ -68,3 +68,19 @@ AppBarTheme appBarTheme = const AppBarTheme(
   foregroundColor: Colors.transparent,
   elevation: 0,
 );
+
+
+///----------Text Form Field styles ---------////
+///
+
+ InputDecoration sicklerTextFieldDecoration = InputDecoration(
+        border: OutlineInputBorder(
+          gapPadding: 0,
+          borderSide: BorderSide.none,
+          borderRadius:  BorderRadius.circular(kDefaultPadding),
+        ),
+        isDense: false,
+        filled: true,
+        hintStyle: kBody, 
+        fillColor: Colors.white.withOpacity(.2),
+      );
