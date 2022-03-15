@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sickler/global_components/appbar.dart';
 import 'package:sickler/screens/addscreen/components/add_screen_list_item.dart';
 import 'package:sickler/screens/hbscreen/hb_screen.dart';
 import '../../constants.dart';
-import '../../size_config.dart';
 
 class AddScreen extends StatelessWidget {
   static const id = "add screen";
