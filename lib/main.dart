@@ -3,6 +3,8 @@ import 'package:sickler/Theme.dart';
 import 'package:sickler/screens/addscreen/add_screen.dart';
 import 'package:sickler/screens/authscreens/create_account_screen.dart';
 import 'package:sickler/screens/authscreens/sign_in_screen.dart';
+import 'package:sickler/screens/drugsscreen/add_drugs_screen.dart';
+import 'package:sickler/screens/drugsscreen/your_drugs_screen.dart';
 import 'package:sickler/screens/hbscreen/hb_screen.dart';
 import 'package:sickler/screens/homescreen/homescreen.dart';
 import 'package:sickler/screens/info_gathering_screens/health_situation_screen.dart';
@@ -23,7 +25,7 @@ class Sickler extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Sickler',
       theme: sicklerLightTheme(context),
-      home: const AddScreen(),
+      home:  const YourDrugScreen(),
       routes: {
         SicklerHomeScreen.id: (context) => const SicklerHomeScreen(),
         SicklerSignInScreen.id: (context) => const SicklerSignInScreen(),
@@ -34,6 +36,8 @@ class Sickler extends StatelessWidget {
         WaterScreen.id: (context) => const WaterScreen(),
         HbScreen.id: (context) => const HbScreen(),
         AddScreen.id: (context) => const AddScreen(),
+        AddDrugsScreen.id:(context) =>  AddDrugsScreen(),
+        YourDrugScreen.id:(context) => const YourDrugScreen(),
       },
     );
   }
