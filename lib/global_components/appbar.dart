@@ -41,17 +41,20 @@ class SicklerAppBar extends StatelessWidget with PreferredSizeWidget {
               : null),
       actions: showActions == true
           ? [
-              IconButton(
-                padding: const EdgeInsets.only(
+              Padding(
+            padding: const EdgeInsets.only(
                     right: kDefaultPadding, top: kDefaultPadding2x),
-                onPressed: () {
-                  HapticFeedback.lightImpact();
-                  Feedback.forTap(context);
-                  Scaffold.of(context).openEndDrawer();
-                },
-                icon: SvgPicture.asset(
-                  "assets/svg/menu_icon.svg",
-                  color: iconColor ?? Theme.of(context).iconTheme.color,
+                child: IconButton(
+                  splashRadius: 28,
+                  onPressed: () {
+                    HapticFeedback.lightImpact();
+                    Feedback.forTap(context);
+                    Scaffold.of(context).openEndDrawer();
+                  },
+                  icon: SvgPicture.asset(
+                    "assets/svg/menu_icon.svg",
+                    color: iconColor ?? Theme.of(context).iconTheme.color,
+                  ),
                 ),
               ),
             ]
