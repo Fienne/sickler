@@ -8,7 +8,7 @@ import 'components/rounded_plus_minu_button.dart';
 
 class AddDrugsScreen extends StatefulWidget {
   static const id = "add drugs screen";
-  AddDrugsScreen({Key? key}) : super(key: key);
+  const AddDrugsScreen({Key? key}) : super(key: key);
 
   @override
   State<AddDrugsScreen> createState() => _AddDrugsScreenState();
