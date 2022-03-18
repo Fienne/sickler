@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sickler/global_components/sickler_button.dart';
 import 'package:sickler/screens/authscreens/components/text_form_field.dart';
 import 'package:sickler/screens/authscreens/create_account_screen.dart';
+import 'package:sickler/services/firebase_auth/firebase_auth_service.dart';
 
 import '../../constants.dart';
 import '../../size_config.dart';
@@ -91,9 +92,28 @@ class _SicklerSignInScreenState extends State<SicklerSignInScreen> {
                       onPressed: () {
                         HapticFeedback.lightImpact();
                         Feedback.forTap(context);
+                        FirebaseAuthService()
+                            .signIn(email.text, password.text, context);
                       },
                       isPrimaryButton: true),
                   SizedBox(height: relHeight(kDefaultPadding, context)),
+
+                  ///Todo: Change to google logo
+                  SicklerButton(
+                      colour: kPurple80,
+                      buttonLabel: "Sign In with Google",
+                      onPressed: () async {
+                        HapticFeedback.lightImpact();
+                        Feedback.forTap(context);
+                        FirebaseAuthService().signInWithGoogle();
+
+                        ///Todo: probably makr somthing to show that the app is registering
+                      },
+                      isPrimaryButton: true),
+                  SizedBox(
+                    height: relHeight(kDefaultPadding, context),
+                  ),
+
                   SicklerButton(
                       colour: kPurple80,
                       buttonLabel: "Create Account",
