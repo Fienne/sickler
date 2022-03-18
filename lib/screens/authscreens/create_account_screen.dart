@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sickler/global_components/sickler_button.dart';
 import 'package:sickler/screens/authscreens/components/text_form_field.dart';
 import 'package:sickler/screens/authscreens/sign_in_screen.dart';
+import 'package:sickler/services/firebase_auth/firebase_auth_service.dart';
 import '../../constants.dart';
 import '../../size_config.dart';
 
@@ -98,15 +99,43 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   SizedBox(
                     height: relHeight(40, context),
                   ),
-                  SicklerTextFormField(
-                      controller: firstName, hintText: "First Name"),
+                  TextFormField(
+                    controller: firstName,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText2!
+                        .copyWith(color: Colors.white),
+                    decoration: sicklerTextFieldDecoration.copyWith(
+                      hintText: "First Name",
+                      fillColor: Colors.white.withOpacity(.2),
+                    ),
+                  ),
                   SizedBox(
                     height: relHeight(kDefaultPadding, context),
                   ),
-                  SicklerTextFormField(
-                      controller: lastName, hintText: "Last Name"),
+                  TextFormField(
+                    controller: lastName,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText2!
+                        .copyWith(color: Colors.white),
+                    decoration: sicklerTextFieldDecoration.copyWith(
+                      hintText: "Last Name",
+                      fillColor: Colors.white.withOpacity(.2),
+                    ),
+                  ),
                   SizedBox(height: relHeight(kDefaultPadding, context)),
-                  SicklerTextFormField(controller: email, hintText: "Email"),
+                  TextFormField(
+                    controller: email,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText2!
+                        .copyWith(color: Colors.white),
+                    decoration: sicklerTextFieldDecoration.copyWith(
+                      hintText: "Email",
+                      fillColor: Colors.white.withOpacity(.2),
+                    ),
+                  ),
                   SizedBox(height: relHeight(kDefaultPadding, context)),
                   SicklerPasswordField(
                       controller: password, hintText: "Password"),
@@ -116,9 +145,30 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   SicklerButton(
                       colour: kPurple80,
                       buttonLabel: "Create Account",
-                      onPressed: () {
+                      onPressed: () async {
                         HapticFeedback.lightImpact();
                         Feedback.forTap(context);
+                        FirebaseAuthService()
+                            .registerUser(email.text, password.text, context);
+
+                        ///Todo: probably makr somthing to show that the app is registering
+                      },
+                      isPrimaryButton: true),
+
+                  SizedBox(
+                    height: relHeight(kDefaultPadding, context),
+                  ),
+
+                  ///Todo: Change to google logo
+                  SicklerButton(
+                      colour: kPurple80,
+                      buttonLabel: "Sign In with Google",
+                      onPressed: () async {
+                        HapticFeedback.lightImpact();
+                        Feedback.forTap(context);
+                        FirebaseAuthService().signInWithGoogle();
+
+                        ///Todo: probably makr somthing to show that the app is registering
                       },
                       isPrimaryButton: true),
                   SizedBox(
@@ -128,8 +178,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     onTap: () {
                       HapticFeedback.lightImpact();
                       Feedback.forTap(context);
-                      Navigator.popAndPushNamed(
-                          context, SicklerSignInScreen.id);
+                      Navigator.pushNamed(context, SicklerSignInScreen.id);
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(kDefaultPadding),
