@@ -11,9 +11,11 @@ import 'package:sickler/screens/homescreen/homescreen.dart';
 import 'package:sickler/screens/info_gathering_screens/health_situation_screen.dart';
 import 'package:sickler/screens/info_gathering_screens/personal_info_gathering_screen.dart';
 import 'package:sickler/screens/waterscreen/water_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() {
   runApp(const Sickler());
+  Firebase.initializeApp();
 }
 
 class Sickler extends StatelessWidget {
@@ -26,7 +28,7 @@ class Sickler extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Sickler',
       theme: sicklerLightTheme(context),
-      home:  const EmergencyContactsScreen(),
+      home:  const CreateAccountScreen(),
       routes: {
         SicklerHomeScreen.id: (context) => const SicklerHomeScreen(),
         SicklerSignInScreen.id: (context) => const SicklerSignInScreen(),
