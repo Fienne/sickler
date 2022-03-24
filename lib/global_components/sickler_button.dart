@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants.dart';
@@ -103,7 +104,6 @@ class SicklerColoredButton extends StatelessWidget {
 }
 
 class SicklerTransparentButton extends StatelessWidget {
-
   final String buttonLabel;
   final Color? colour;
   final Color buttonBgColour;
@@ -114,7 +114,6 @@ class SicklerTransparentButton extends StatelessWidget {
     required this.colour,
     required this.buttonBgColour,
     required this.onPressed,
-    
   }) : super(key: key);
 
   @override
@@ -125,7 +124,6 @@ class SicklerTransparentButton extends StatelessWidget {
         height: relHeight(72, context),
         width: double.infinity,
         decoration: BoxDecoration(
-        
           color: buttonBgColour,
           borderRadius: BorderRadius.circular(kDefaultPadding + 4),
         ),
@@ -137,7 +135,6 @@ class SicklerTransparentButton extends StatelessWidget {
                 buttonLabel,
                 style: Theme.of(context).textTheme.bodyText2!.copyWith(
                       fontSize: 18,
-                    
                       color: colour,
                     ),
               ),
