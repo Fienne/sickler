@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sickler/constants.dart';
 import 'package:sickler/global_components/sickler_button.dart';
 import 'package:sickler/size_config.dart';
 import '../../global_components/scaffold_body_with_top_image.dart';
+import '../homescreen/homescreen.dart';
 
 class HealthSituationScreen extends StatefulWidget {
   static const String id = "health situation screen";
@@ -51,7 +53,11 @@ class _HealthSituationScreenState extends State<HealthSituationScreen> {
               buttonBgColour: kPurple80,
               hasShadow: true,
               labelColour: Colors.white,
-              onPressed: () {},
+              onPressed: () {
+  HapticFeedback.lightImpact();
+        Feedback.forTap(context);
+                Navigator.pushNamed(context, SicklerHomeScreen.id);
+              },
             ),
             SizedBox(height: relHeight(40, context)),
           ],
