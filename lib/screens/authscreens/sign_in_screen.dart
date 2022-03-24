@@ -105,7 +105,7 @@ class _SicklerSignInScreenState extends State<SicklerSignInScreen> {
                       onPressed: () async {
                         HapticFeedback.lightImpact();
                         Feedback.forTap(context);
-                        FirebaseAuthService().signInWithGoogle();
+                        FirebaseAuthService().signInWithGoogle(context);
 
                         ///Todo: probably makr somthing to show that the app is registering
                       },
