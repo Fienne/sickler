@@ -166,7 +166,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                       onPressed: () async {
                         HapticFeedback.lightImpact();
                         Feedback.forTap(context);
-                        FirebaseAuthService().signInWithGoogle();
+                        FirebaseAuthService().signInWithGoogle(context);
 
                         ///Todo: probably makr somthing to show that the app is registering
                       },
