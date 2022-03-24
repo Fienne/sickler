@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -16,19 +18,19 @@ class FirebaseAuthService {
         Navigator.pushNamed(context, PersonalInfoGatheringScreen.id);
       }
     } catch (e) {
-      // ignore: avoid_print
       print(e);
     }
   }
 
-  void getCurrentUser() {
+  User? getCurrentUser() {
     final User? currentUser = _auth.currentUser;
 
     if (currentUser != null) {
-    final _uid = currentUser.uid;
-    final _email = currentUser.email;
-
+      final _uid = currentUser.uid;
+      final _email = currentUser.email;
     }
+
+    return currentUser;
   }
 
   void signIn(String email, String password, BuildContext context) async {
@@ -36,18 +38,12 @@ class FirebaseAuthService {
       final UserCredential? _loggedInUser = await _auth
           .signInWithEmailAndPassword(email: email, password: password);
 
-      
-        
       if (_loggedInUser != null) {
-        
         // final _uid = _loggedInUser.user!.uid;
         // final _email = _loggedInUser.user!.email;
-         Navigator.pushNamed(context, SicklerHomeScreen.id);
+        Navigator.pushNamed(context, SicklerHomeScreen.id);
       }
-       
-      
     } catch (e) {
-      // ignore: avoid_print
       print(e);
     }
   }
@@ -56,22 +52,21 @@ class FirebaseAuthService {
     try {
       _auth.signOut();
     } catch (e) {
-      // ignore: avoid_print
       print(e);
     }
   }
 
-  Future<void> signInWithGoogle() async {
+  Future<void> signInWithGoogle(BuildContext context) async {
     GoogleSignIn _googleSignIn = GoogleSignIn(
       scopes: [
         'email',
-        'https://www.googleapis.com/auth/contacts.readonly',
+        //'https://www.googleapis.com/auth/contacts.readonly',
       ],
     );
 
     try {
       //Signs you into your google account
-      
+
       GoogleSignInAccount? _googleUser = await _googleSignIn.signIn();
       //creates a google account on Firebase
       GoogleSignInAuthentication? _googleAuth =
@@ -79,16 +74,20 @@ class FirebaseAuthService {
 
       final AuthCredential credential = GoogleAuthProvider.credential(
           idToken: _googleAuth.idToken, accessToken: _googleAuth.accessToken);
-      UserCredential _loggedInUser =
+      UserCredential? _loggedInUser =
           await _auth.signInWithCredential(credential);
 
       // if (_loggedInUser != null) {
       //   final _uid = _loggedInUser.user!.uid;
       //   final _email = _loggedInUser.user!.email;
       // }
+
+      // ignore: unnecessary_null_comparison
+      if (_loggedInUser != null) {
+        Navigator.pushNamed(context, PersonalInfoGatheringScreen.id);
+      }
     } catch (e) {
       print(e);
     }
   }
-
 }
