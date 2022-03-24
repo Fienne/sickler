@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sickler/constants.dart';
 import 'package:sickler/global_components/sickler_button.dart';
 import 'package:sickler/size_config.dart';
 import 'components/personal_info_gathering_list_item.dart';
+import 'health_situation_screen.dart';
 
 class PersonalInfoGatheringScreen extends StatefulWidget {
   static const String id = "personal info gathering screen";
@@ -82,7 +84,11 @@ class _PersonalInfoGatheringScreenState
                 buttonBgColour: kPurple80,
                 hasShadow: true,
                 labelColour: Colors.white,
-                onPressed: () {},
+                onPressed: () {
+                    HapticFeedback.lightImpact();
+        Feedback.forTap(context);
+                  Navigator.pushNamed(context, HealthSituationScreen.id);
+                },
               ),
               SizedBox(height: relHeight(40, context)),
             ],
