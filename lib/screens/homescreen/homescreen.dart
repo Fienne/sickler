@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:sickler/constants.dart';
 import 'package:sickler/global_components/appbar.dart';
+import 'package:sickler/models/user_model.dart';
 import 'package:sickler/screens/homescreen/components/medicine_card.dart';
 import 'package:sickler/screens/homescreen/components/stats_card.dart';
 import 'package:sickler/screens/homescreen/components/water_card.dart';
 import 'package:sickler/size_config.dart';
 import 'components/recommendation_card.dart';
+import 'package:provider/provider.dart';
 
 class SicklerHomeScreen extends StatefulWidget {
   static const String id = "SicklerHomeScreen";
@@ -16,12 +18,15 @@ class SicklerHomeScreen extends StatefulWidget {
   _SicklerHomeScreenState createState() => _SicklerHomeScreenState();
 }
 
+
 class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const SicklerAppBar(),
+      appBar: SicklerAppBar(
+      
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -49,7 +54,7 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
                       style: Theme.of(context).textTheme.headline2,
                     ),
                     Text(
-                      "Name",
+                     Provider.of<SicklerUser>(context).user.email!,
                       style: Theme.of(context).textTheme.headline1,
                     ),
                   ],
