@@ -25,10 +25,10 @@ class FirebaseAuthService {
   User? getCurrentUser() {
     final User? currentUser = _auth.currentUser;
 
-    if (currentUser != null) {
-      final _uid = currentUser.uid;
-      final _email = currentUser.email;
-    }
+    // if (currentUser != null) {
+    //   final _uid = currentUser.uid;
+    //   final _email = currentUser.email;
+    // }
 
     return currentUser;
   }
@@ -60,6 +60,7 @@ class FirebaseAuthService {
     GoogleSignIn _googleSignIn = GoogleSignIn(
       scopes: [
         'email',
+        'profile',
         //'https://www.googleapis.com/auth/contacts.readonly',
       ],
     );
@@ -76,7 +77,8 @@ class FirebaseAuthService {
           idToken: _googleAuth.idToken, accessToken: _googleAuth.accessToken);
       UserCredential? _loggedInUser =
           await _auth.signInWithCredential(credential);
-
+      
+  
       // if (_loggedInUser != null) {
       //   final _uid = _loggedInUser.user!.uid;
       //   final _email = _loggedInUser.user!.email;
