@@ -1,8 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sickler/Theme.dart';
-import 'package:sickler/models/user_model.dart';
+import 'package:sickler/providers/user_provider.dart';
+import 'package:sickler/providers/water_provider.dart';
 import 'package:sickler/screens/addscreen/add_screen.dart';
 import 'package:sickler/screens/authscreens/create_account_screen.dart';
 import 'package:sickler/screens/authscreens/root_screen.dart';
@@ -16,7 +16,6 @@ import 'package:sickler/screens/info_gathering_screens/health_situation_screen.d
 import 'package:sickler/screens/info_gathering_screens/personal_info_gathering_screen.dart';
 import 'package:sickler/screens/waterscreen/water_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:sickler/services/firebase_auth/firebase_auth_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,8 +30,11 @@ class Sickler extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<SicklerUser>(
-      create: (context) => SicklerUser(),
+    return MultiProvider(
+      providers: [
+        Provider<SUserData>(create: (context) => SUserData()),
+        Provider<WaterData>(create: (context) => WaterData()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Sickler',
