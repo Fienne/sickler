@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sickler/constants.dart';
 import 'package:sickler/global_components/appbar.dart';
-import 'package:sickler/models/user_model.dart';
+import 'package:sickler/providers/user_provider.dart';
 import 'package:sickler/screens/homescreen/components/medicine_card.dart';
 import 'package:sickler/screens/homescreen/components/stats_card.dart';
 import 'package:sickler/screens/homescreen/components/water_card.dart';
+import 'package:sickler/screens/waterscreen/water_screen.dart';
 import 'package:sickler/size_config.dart';
 import 'components/recommendation_card.dart';
 import 'package:provider/provider.dart';
@@ -24,8 +26,8 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: SicklerAppBar(
-      
+      appBar: const SicklerAppBar(
+      showBackButton: false
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -54,7 +56,7 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
                       style: Theme.of(context).textTheme.headline2,
                     ),
                     Text(
-                     Provider.of<SicklerUser>(context).user.email!,
+                     Provider.of<SUserData>(context).user.firstName!,
                       style: Theme.of(context).textTheme.headline1,
                     ),
                   ],
@@ -82,7 +84,7 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
               ///Statistics Cards
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children:  [
                   StatsCard(
                     iconLink: "assets/svg/water_drop.svg",
                     statsTitle: "Water",
@@ -91,6 +93,11 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
                     statsTimestamp: "20 min",
                     colour: kBlue,
                     bgColour: kBlue20,
+                    onPressed: (){
+                      HapticFeedback.lightImpact();
+                      Feedback.forTap(context);
+                      Navigator.pushNamed(context, WaterScreen.id);
+                    },
                   ),
                   StatsCard(
                     iconLink: "assets/svg/hb_icon.svg",
@@ -100,6 +107,11 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
                     statsTimestamp: "Feb 13",
                     colour: kFuchsia,
                     bgColour: kFuchsia20,
+                    onPressed:  (){
+                      HapticFeedback.lightImpact();
+                      Feedback.forTap(context);
+                      Navigator.pushNamed(context, WaterScreen.id);
+                    },
                   ),
                 ],
               ),
@@ -108,7 +120,7 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children:  [
                   StatsCard(
                     iconLink: "assets/svg/o2_icon.svg",
                     statsTitle: "Oxygen",
@@ -117,6 +129,11 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
                     statsTimestamp: "28 sec ago",
                     colour: kOrange,
                     bgColour: kOrange20,
+                    onPressed:  (){
+                      HapticFeedback.lightImpact();
+                      Feedback.forTap(context);
+                      Navigator.pushNamed(context, WaterScreen.id);
+                    },
                   ),
                   StatsCard(
                     iconLink: "assets/svg/drug_icon.svg",
@@ -126,6 +143,11 @@ class _SicklerHomeScreenState extends State<SicklerHomeScreen> {
                     statsTimestamp: "tonight",
                     colour: kPurple,
                     bgColour: kPurple20,
+                    onPressed:  (){
+                      HapticFeedback.lightImpact();
+                      Feedback.forTap(context);
+                      Navigator.pushNamed(context, WaterScreen.id);
+                    },
                   ),
                 ],
               ),
