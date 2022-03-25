@@ -28,11 +28,11 @@ class SicklerAddButton extends StatelessWidget {
         maximumSize: const Size.square(72),
         shape: const CircleBorder(side: BorderSide.none),
       ),
-      onPressed: () {
-        Feedback.forTap(context);
-        HapticFeedback.lightImpact();
-        onPressed;
-      },
+      onPressed:
+        onPressed,
+
+        
+    
       child: SvgPicture.asset(
         
         iconLink ?? "assets/svg/plus_icon.svg",
