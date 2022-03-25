@@ -15,21 +15,15 @@ class WaterScreen extends StatefulWidget {
   static const String id = "water screen";
   const WaterScreen({Key? key}) : super(key: key);
 
-
-
   @override
   _WaterScreenState createState() => _WaterScreenState();
 }
 
- 
-
-
 class _WaterScreenState extends State<WaterScreen> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<WaterData>(
-      builder: (context, waterData, child){
-        return SicklerScaffoldBodyWithTopImage(
+    return Consumer<WaterData>(builder: (context, waterData, child) {
+      return SicklerScaffoldBodyWithTopImage(
         showPageTitle: true,
         pageTitle: "Water",
         topBgColour: kBlue20,
@@ -56,24 +50,34 @@ class _WaterScreenState extends State<WaterScreen> {
               const SizedBox(
                 height: 4,
               ),
-    
+
               ///Water Percentage
-               SicklerCircularPercentIndicator(
-                progress: waterData.percentageCompleted!/100,
+              SicklerCircularPercentIndicator(
+                progress:( waterData.percentageCompleted/100) > 1 ? 1: waterData.percentageCompleted/100,
                 animate: true,
-                value: (waterData.percentageCompleted!/100).toString(),
+                value: waterData.percentageCompleted.toString(),
                 unit: "%",
               ),
               const SizedBox(height: 40),
-              const VolumeDrunk(volumeDrunk: "1,703 ml", volumeLeft: "1,243"),
+              VolumeDrunk(
+                  volumeDrunk: "${waterData.totalWaterDrankToday} ml",
+                  volumeLeft: "${waterData.waterLeftToday}"),
               const SizedBox(height: 40),
-    
+
               ///Add Button
               SicklerAddButton(
-                onPressed: () {},
+                onPressed: () {
+                   // print("adding water");
+                  waterData.addWaterLog();
+                waterData.calWaterDrankToday();
+                  waterData.caclPercentageCompleted();
+                  
+                  
+                },
               ),
+      
               const SizedBox(height: 60),
-    
+
               ///Water Stats
               Align(
                 alignment: Alignment.centerLeft,
@@ -87,8 +91,8 @@ class _WaterScreenState extends State<WaterScreen> {
                         style: Theme.of(context).textTheme.headline2,
                       ),
                       const SizedBox(height: 20),
-                   WeekAverage(
-                        amount: "${waterData.weeklyAverage ?? ""} L",
+                      WeekAverage(
+                        amount: "${waterData.weeklyAverage} L",
                         //unit: "L",
                       )
                     ],
@@ -96,10 +100,10 @@ class _WaterScreenState extends State<WaterScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-    
+
               ///Statistics Card
               const SicklerBarChartStats(),
-    
+
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
@@ -113,15 +117,28 @@ class _WaterScreenState extends State<WaterScreen> {
                   ),
                 ),
               ),
-    
+
               ///Water log cards
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: WaterLogCard(
-                  time: "2:38 pm",
-                  volume: "500",
-                ),
-              ),
+              // GridView.builder(
+              //   itemCount: waterData.totalWaterTodayList.length,
+              //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              //       crossAxisSpacing: kDefaultPadding2x,
+              //         crossAxisCount: 2),
+              //     itemBuilder: (context, index) {
+                    
+              //       return WaterLogCard(
+              //           volume: waterData.totalWaterTodayList[index].amount
+              //               .toString(),
+              //           time: waterData.totalWaterTodayList[index].time
+              //               .toString());
+              //     }),
+              // const Align(
+              //   alignment: Alignment.centerLeft,
+              //   child: WaterLogCard(
+              //     time: "2:38 pm",
+              //     volume: "500",
+              //   ),
+              // ),
               const SizedBox(
                 height: 60,
               )
@@ -129,8 +146,6 @@ class _WaterScreenState extends State<WaterScreen> {
           ),
         ),
       );
-      }
-      
-    );
+    });
   }
 }
