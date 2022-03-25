@@ -18,6 +18,8 @@ import 'package:sickler/screens/waterscreen/water_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
+  //Provider.debugCheckInvalidValueType = null;
+
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
@@ -32,29 +34,34 @@ class Sickler extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<SUserData>(create: (context) => SUserData()),
-        Provider<WaterData>(create: (context) => WaterData()),
+        ChangeNotifierProvider<SUserData>(create: (context) => SUserData()),
+        ChangeNotifierProvider<WaterData>(create: (context) => WaterData()),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Sickler',
-        theme: sicklerLightTheme(context),
-        home: const RootScreen(),
-        routes: {
-          SicklerHomeScreen.id: (context) => const SicklerHomeScreen(),
-          SicklerSignInScreen.id: (context) => const SicklerSignInScreen(),
-          CreateAccountScreen.id: (context) => const CreateAccountScreen(),
-          PersonalInfoGatheringScreen.id: (context) =>
-              const PersonalInfoGatheringScreen(),
-          HealthSituationScreen.id: (context) => const HealthSituationScreen(),
-          WaterScreen.id: (context) => const WaterScreen(),
-          HbScreen.id: (context) => const HbScreen(),
-          AddScreen.id: (context) => const AddScreen(),
-          AddDrugsScreen.id: (context) => const AddDrugsScreen(),
-          YourDrugScreen.id: (context) => const YourDrugScreen(),
-          EmergencyContactsScreen.id: (context) =>
-              const EmergencyContactsScreen(),
-        },
+      child: Builder(
+        builder: ((context) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Sickler',
+            theme: sicklerLightTheme(context),
+            home: const RootScreen(),
+            routes: {
+              SicklerHomeScreen.id: (context) => const SicklerHomeScreen(),
+              SicklerSignInScreen.id: (context) => const SicklerSignInScreen(),
+              CreateAccountScreen.id: (context) => const CreateAccountScreen(),
+              PersonalInfoGatheringScreen.id: (context) =>
+                  const PersonalInfoGatheringScreen(),
+              HealthSituationScreen.id: (context) =>
+                  const HealthSituationScreen(),
+              WaterScreen.id: (context) => const WaterScreen(),
+              HbScreen.id: (context) => const HbScreen(),
+              AddScreen.id: (context) => const AddScreen(),
+              AddDrugsScreen.id: (context) => const AddDrugsScreen(),
+              YourDrugScreen.id: (context) => const YourDrugScreen(),
+              EmergencyContactsScreen.id: (context) =>
+                  const EmergencyContactsScreen(),
+            },
+          );
+        }),
       ),
     );
   }
