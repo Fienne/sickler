@@ -4,29 +4,40 @@ import 'package:flutter/foundation.dart';
 import '../models/water_model.dart';
 
 class WaterData extends ChangeNotifier {
-  List<WaterLog> totalWater = [];
-  List<WaterLog> totalWaterToday = [];
-  double? cupSize = 500;
-  double? dailyGoal;
-  double? totalWaterDrankToday;
-  double? sumofWaterToday;
-  int? percentageCompleted;
-  double? weeklyAverage;
+  ///Units are in mililitres
+  List<WaterLog> totalWaterList = [];
+  List<WaterLog> totalWaterTodayList = [];
+  int cupSize = 500;
+  int dailyGoal = 3000;
+  int totalWaterDrankToday = 0;
+  int waterLeftToday = 0;
+  int percentageCompleted = 0;
+  double weeklyAverage = 0;
 
   ///Calc Water dranktoday
 
   calWaterDrankToday() {
-    for (WaterLog waterItems in totalWaterToday) {
-      totalWaterDrankToday = waterItems.amount;
+     totalWaterDrankToday = 0;
+    for (WaterLog waterAmount in totalWaterTodayList) {
+    
+      totalWaterDrankToday = (totalWaterDrankToday + waterAmount.amount!);
     }
+
+    waterLeftToday = dailyGoal - totalWaterDrankToday;
 
     notifyListeners();
   }
 
+  
+
   ///calculate percentage Complete.
 
   caclPercentageCompleted() {
-    percentageCompleted = (totalWaterDrankToday! / dailyGoal! * 100).toInt();
+    percentageCompleted = (totalWaterDrankToday / dailyGoal * 100).toInt();
+
+    // print("percentage completed is $percentageCompleted");
+    //   print("total water drank today is $totalWaterDrankToday");
+
 
     notifyListeners();
   }
@@ -34,9 +45,10 @@ class WaterData extends ChangeNotifier {
   ///Add Water Log
   addWaterLog() {
     //add water to todays list
-    totalWaterToday.add(WaterLog(amount: cupSize, time: DateTime.now()));
+    totalWaterTodayList.add(WaterLog(amount: cupSize, time: DateTime.now()));
     //add water to lifteimelist
-    totalWater.add(WaterLog(amount: cupSize, time: DateTime.now()));
+    totalWaterList.add(WaterLog(amount: cupSize, time: DateTime.now()));
+    print(totalWaterTodayList[0].amount);
     notifyListeners();
   }
 
@@ -44,22 +56,22 @@ class WaterData extends ChangeNotifier {
 
   deleteLastWaterLog() {
     //remove last water added from today's list
-    totalWaterToday.removeLast();
+    totalWaterTodayList.removeLast();
     //remove last water added from total list
-    totalWater.removeLast();
+    totalWaterList.removeLast();
     notifyListeners();
   }
 
   deleteWaterLog(int index) {
     //remove a particular wter log from today's list
-    totalWater.removeAt(index);
+    totalWaterList.removeAt(index);
     //remove a particular wter log from total list
 
-    totalWaterToday.removeAt(index);
+    totalWaterTodayList.removeAt(index);
     notifyListeners();
   }
 
-  changeCupSize(double newCupSize) {
+  changeCupSize(int newCupSize) {
     cupSize = newCupSize;
     notifyListeners();
   }
@@ -67,10 +79,10 @@ class WaterData extends ChangeNotifier {
   ///Set Daily Goal
   setDailyGoal(double newDailyGoal) {
     if (newDailyGoal < 100) {
-      dailyGoal = 1000 * newDailyGoal;
+      dailyGoal = 1000 * newDailyGoal.toInt();
     }
 
-    dailyGoal = newDailyGoal;
+    dailyGoal = newDailyGoal.toInt();
     notifyListeners();
   }
 
