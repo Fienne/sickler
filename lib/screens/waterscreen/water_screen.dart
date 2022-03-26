@@ -24,10 +24,12 @@ class _WaterScreenState extends State<WaterScreen> {
   Widget build(BuildContext context) {
     return Consumer<WaterData>(builder: (context, waterData, child) {
       return SicklerScaffoldBodyWithTopImage(
+      
+        
         showPageTitle: true,
         pageTitle: "Water",
         topBgColour: kBlue20,
-        showBackButton: false,
+        showBackButton: true,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
           child: Column(
@@ -60,6 +62,7 @@ class _WaterScreenState extends State<WaterScreen> {
               ),
               const SizedBox(height: 40),
               VolumeDrunk(
+                newVal: waterData.totalWaterDrankToday,
                   volumeDrunk: "${waterData.totalWaterDrankToday} ml",
                   volumeLeft: "${waterData.waterLeftToday}"),
               const SizedBox(height: 40),
@@ -118,12 +121,16 @@ class _WaterScreenState extends State<WaterScreen> {
                 ),
               ),
 
-              ///Water log cards
+           ///   /Water log cards
               // GridView.builder(
+              //   physics: const NeverScrollableScrollPhysics(),
+              //   shrinkWrap: false,
               //   itemCount: waterData.totalWaterTodayList.length,
+                
               //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              //       crossAxisSpacing: kDefaultPadding2x,
-              //         crossAxisCount: 2),
+              //       //crossAxisSpacing: kDefaultPadding2x,
+              //       crossAxisCount: 2,
+              //       ),
               //     itemBuilder: (context, index) {
                     
               //       return WaterLogCard(
