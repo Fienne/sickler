@@ -1,5 +1,9 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
+import 'package:sickler/providers/user_provider.dart';
+import 'package:sickler/services/firestore/firestore_service.dart';
 
 import '../models/water_model.dart';
 
@@ -43,12 +47,15 @@ class WaterData extends ChangeNotifier {
   }
 
   ///Add Water Log
-  addWaterLog() {
+  addWaterLog(BuildContext context) {
     //add water to todays list
     totalWaterTodayList.add(WaterLog(amount: cupSize, time: DateTime.now()));
     //add water to lifteimelist
     totalWaterList.add(WaterLog(amount: cupSize, time: DateTime.now()));
    // print(totalWaterTodayList[0].amount);
+
+   ///Add waterlog to Firebase
+   FirestoreService(uid: Provider.of<SUserData>(context, listen: false).user.uid!).addWaterData(amount: cupSize, time: DateTime.now());
     notifyListeners();
   }
 
