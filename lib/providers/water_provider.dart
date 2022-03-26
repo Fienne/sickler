@@ -48,7 +48,7 @@ class WaterData extends ChangeNotifier {
     totalWaterTodayList.add(WaterLog(amount: cupSize, time: DateTime.now()));
     //add water to lifteimelist
     totalWaterList.add(WaterLog(amount: cupSize, time: DateTime.now()));
-    print(totalWaterTodayList[0].amount);
+   // print(totalWaterTodayList[0].amount);
     notifyListeners();
   }
 
@@ -87,6 +87,5 @@ class WaterData extends ChangeNotifier {
   }
 
   calcWeeklyAverage(){
-
   }
 }
