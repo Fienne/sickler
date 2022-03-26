@@ -1,10 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:sickler/global_components/sickler_button.dart';
+import 'package:sickler/providers/user_provider.dart';
 import 'package:sickler/screens/authscreens/components/text_form_field.dart';
 import 'package:sickler/screens/authscreens/create_account_screen.dart';
 import 'package:sickler/services/firebase_auth/firebase_auth_service.dart';
+import 'package:sickler/services/firestore/firestore_service.dart';
 
 import '../../constants.dart';
 import '../../size_config.dart';
@@ -105,7 +109,16 @@ class _SicklerSignInScreenState extends State<SicklerSignInScreen> {
                       onPressed: () async {
                         HapticFeedback.lightImpact();
                         Feedback.forTap(context);
-                        FirebaseAuthService().signInWithGoogle(context);
+                        FirebaseAuthService().signInWithGoogle(context).then((value) async {
+
+                        final currentUser = Provider.of<SUserData>(context).user;
+
+                        FirestoreService(uid: currentUser.uid!).addUserProfileInfo(context: context, firstName: currentUser.firstName!);
+                        
+                        }
+                          
+                          
+                          );
 
                         ///Todo: probably makr somthing to show that the app is registering
                       },
