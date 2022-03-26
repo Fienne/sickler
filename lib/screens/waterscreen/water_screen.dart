@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sickler/constants.dart';
 import 'package:sickler/global_components/scaffold_body_with_top_image.dart';
+import 'package:sickler/providers/user_provider.dart';
 import 'package:sickler/providers/water_provider.dart';
+import 'package:sickler/services/firestore/firestore_service.dart';
 import '../../global_components/circular_add_button.dart';
 import '../../global_components/sickler_circular_percent_indicator.dart';
 import 'components/sickler_bar_charts.dart';
@@ -71,9 +73,11 @@ class _WaterScreenState extends State<WaterScreen> {
               SicklerAddButton(
                 onPressed: () {
                    // print("adding water");
-                  waterData.addWaterLog();
+                  waterData.addWaterLog(context);
                 waterData.calWaterDrankToday();
                   waterData.caclPercentageCompleted();
+
+            
                   
                   
                 },
@@ -122,30 +126,30 @@ class _WaterScreenState extends State<WaterScreen> {
               ),
 
            ///   /Water log cards
-              // GridView.builder(
-              //   physics: const NeverScrollableScrollPhysics(),
-              //   shrinkWrap: false,
-              //   itemCount: waterData.totalWaterTodayList.length,
+              GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: waterData.totalWaterTodayList.length,
                 
-              //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              //       //crossAxisSpacing: kDefaultPadding2x,
-              //       crossAxisCount: 2,
-              //       ),
-              //     itemBuilder: (context, index) {
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    //crossAxisSpacing: kDefaultPadding2x,
+                    crossAxisCount: 2,
+                    ),
+                  itemBuilder: (context, index) {
                     
-              //       return WaterLogCard(
-              //           volume: waterData.totalWaterTodayList[index].amount
-              //               .toString(),
-              //           time: waterData.totalWaterTodayList[index].time
-              //               .toString());
-              //     }),
-              // const Align(
-              //   alignment: Alignment.centerLeft,
-              //   child: WaterLogCard(
-              //     time: "2:38 pm",
-              //     volume: "500",
-              //   ),
-              // ),
+                    return WaterLogCard(
+                        volume: waterData.totalWaterTodayList[index].amount
+                            .toString(),
+                        time: waterData.totalWaterTodayList[index].time
+                            .toString());
+                  }),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: WaterLogCard(
+                  time: "2:38 pm",
+                  volume: "500",
+                ),
+              ),
               const SizedBox(
                 height: 60,
               )
