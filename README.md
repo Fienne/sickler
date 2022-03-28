@@ -1,4 +1,4 @@
-# sickler
+# Sickler
 
 Sickler is a help app for Sickle Cell patients, it helps them to monitor and track changes in their health, and get help when needed.
 
