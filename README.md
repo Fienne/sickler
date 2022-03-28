@@ -1,10 +1,10 @@
 # Sickler
-***
+
 
 Sickler is a help app for Sickle Cell patients, it helps them to monitor and track changes in their health, and get help when needed.
 
 ## Introduction
----
+
 The aim of sickler is to help sickle cell patients get better care and treatment. Over the years, this prevailing disease has claimed many lives in our community leaving many families scarred.
 Sickle cell is an inherited genetic disease, meaning it is a disease that’s gotten only from birth For a child to be affected, both mother and father must carry one copy of the sickle cell gene, also known as sickle cell trait, and pass both copies of the altered form to the child. 
 Concerning a cure, they’re a few but none that is readily available for use in the African community 
@@ -12,7 +12,7 @@ Hence, the only way sickle cell patients can really get help is through the mana
 This is where Our project Sickler comes in.
 
 ## Key Features
----
+
 - Tracks water intake
 - Tracks haemoglobin(blood) level
 - Tracks oxygen level
@@ -21,18 +21,18 @@ This is where Our project Sickler comes in.
 
 
 ## How to get the app
----
+
 You can install the app on Google Playstore by visiting this link 
 
 ## Usage
----
+
 - Install the app
 - Log in 
 - Explore
 
 
 ## How to build
----
+
 
 ### Getting Started
 
