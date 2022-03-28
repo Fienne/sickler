@@ -47,10 +47,12 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-### Requirements
 
-### Steps to run
-You can build the app using [this] (https://flutter.dev/docs/deployment/android) tutorial
+
+### Steps to follow
+- Clone the app 
+- Get the dependencies
+- Run
 
 
 **Contributors**
